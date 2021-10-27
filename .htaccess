@@ -1,0 +1,16 @@
+AddDefaultCharset utf-8
+
+RewriteCond %(REQUEST_FILENAME) !-f
+RewriteCond %(REQUEST_FILENAME) !-d
+RewriteCond %{REQUEST_URI} !\.(css|gif|ico|jpg|js|png|swf|txt)
+
+Options +FollowSymLinks -Indexes
+RewriteEngine On
+
+RewriteRule ^(login|logout|profile)$ /$1.php [R=301,L]
+RewriteRule ^([0-9A-Za-z-]+)/?$ /index.php?url=$1 [L,QSA]
+
+
+php_value display_errors 1
+php_value display_startup_errors 1
+php_value error_reporting E_ALL
